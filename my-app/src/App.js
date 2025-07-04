@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Welcome from './pages/functionalComponents';
+import { Thankyou, Hello} from './pages/functionalComponents';
+import {Counter, ProfileManagement, CarUpdation, ToggleTheme, ProfileStatus} from './pages/useStates'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* Practicing Functional Components */}
+      <h1>Functional Components</h1>
+      <Welcome name = "Ali"/>
+      <Thankyou />
+      <Hello name = "Umair"/>
+      <hr></hr>
+
+      {/* Practicing UseStates */}
+      <h1>Functional Components</h1>
+      <Counter />
+      <ProfileManagement />
+      <CarUpdation />
+      <ToggleTheme />
+      <ProfileStatus />
+    </>
   );
 }
 
