@@ -87,15 +87,88 @@ export const ToggleTheme = () => {
 
 export const ProfileStatus = () => {
     const [isOnline, setIsOnline] = useState(false);
-    
+
     const updateStatus = () => {
         setIsOnline(prevStatus => !prevStatus);
     }
 
-    return(
+    return (
         <>
-            <h3 style={{color: isOnline? '#00ff00': '#FF0000'}}>{isOnline ? "You are online" : "You are offline"}</h3>
+            <h3 style={{ color: isOnline ? '#00ff00' : '#FF0000' }}>{isOnline ? "You are online" : "You are offline"}</h3>
             <button onClick={updateStatus}>{isOnline ? 'Show Offline' : 'Show Online'}</button>
         </>
+    )
+}
+
+
+// Dynamic List Rendering using useState
+export const ListRenderingDynamic = () => {
+    const [items, setItems] = useState(['apple', 'mango', 'orange']);
+    const [newItems, setNewItems] = useState("");
+    const [isEditing, setIsEditing] = useState(false);
+    const [editIndex, setEditIndex] = useState(null);
+
+    const handleAddItems = () => {
+        if (newItems.trim() === "") return;
+        setItems([...items, newItems]);
+        setNewItems("");
+    };
+
+    const handleDeleteItems = (indexToDelete) => {
+        const updatedItems = items.filter((_, index) => index !== indexToDelete);
+        setItems(updatedItems);
+    };
+
+    const handleAllClear = () => {
+        setItems([]);
+    };
+
+    const handleEditItem = (index) => {
+        setNewItems(items[index]);
+        setIsEditing(true);
+        setEditIndex(index)
+    }
+
+    const handleUpdateItem = () => {
+        if (newItems.trim() === "") return;
+
+        const updatedItems = [...items];
+        updatedItems[editIndex] = newItems;
+
+        setItems(updatedItems);
+        setNewItems("");
+        setIsEditing(false);
+        setEditIndex(null);
+    };
+
+    return (
+        <div>
+            <h2>Dynamic Fruit List</h2>
+            <input
+                type='text'
+                placeholder='Enter the Fruit'
+                value={newItems}
+                onChange={(e) => setNewItems(e.target.value)}
+            />
+            <button onClick={handleAddItems}>Add Item</button>
+            <button onClick={handleAllClear} disabled={items.length === 0} style={{ marginLeft: '10px' }}>Clear All</button>
+            <button onClick={handleUpdateItem} disabled={!isEditing}>Update</button>
+
+            {items.length === 0 ? (
+                <p>No fruits in the list. Add some!</p>
+            ) : (
+                <ul>
+                    {items.map((item, index) => (
+                        <li key={index}>
+                            {item}{" "}
+                            <button onClick={() => handleDeleteItems(index)} style={{ marginLeft: '10px' }}>
+                                Delete
+                            </button>
+                            <button onClick={() => handleEditItem(index)} style={{ marginLeft: '10px' }}>Edit</button>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
     )
 }
