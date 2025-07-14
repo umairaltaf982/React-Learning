@@ -1,7 +1,7 @@
 import './App.css';
 import Welcome from './pages/functionalComponents';
 import { Thankyou, Hello, FriendList} from './pages/functionalComponents';
-import {Counter, ProfileManagement, CarUpdation, ToggleTheme, ProfileStatus, ListRenderingDynamic} from './pages/useStates'
+import {Counter, ProfileManagement, CarUpdation, ToggleTheme, ProfileStatus, ListRenderingDynamic} from './pages/useStates';
 import Welcome1 from './pages/classComponentBasic';
 import {Welcome2} from './pages/classComponentBasic';
 import Counter1 from './pages/ClassComponentState';
@@ -12,7 +12,17 @@ import VirtualDomDemo from './pages/VirtualDomDemo';
 import StateFullExample from './pages/StateFullExample';
 import PropsVsStateExample from './pages/PropsVsStateExample';
 import PureComponentDemo from './pages/PureComponentDemo';
-import UseEffect from './pages/UseEffect'
+import UseEffect from './pages/UseEffect';
+import RefExample from './pages/RefExamples';
+import ForwardRefExample from './pages/ForwardRefExample';
+import PreviousValue from './pages/PreviousValue';
+import { EnhancedClickCounter, EnhancedHoverCounter } from './pages/WithCounterHOC';
+import ThemeProvider from './pages/ThemeProvider';
+import ThemedButton from './pages/ThemedButton';
+import ParentComponent from './pages/ParentComponent';
+import ControlledCompExample from './pages/ControlledCompExample';
+import UncontrolledCompExample from './pages/UncontrolledCompExample';
+import LiftingStateUp from './pages/LiftingStateUp/LiftingStateUp';
 
 
 function App() {
@@ -97,6 +107,55 @@ function App() {
       <h1>useEffect in React</h1>
       <UseEffect />
       <hr></hr>
+
+
+
+      {/* useRef and Forward Ref in React */}
+      <h1>useRef in React</h1>
+      <RefExample />
+      <ForwardRefExample />
+      <PreviousValue />
+      <hr></hr>
+
+
+
+      {/* Higher Order Components (HOC) in React */}
+      <h1>Higher Order Components (HOC) in React</h1>
+      <EnhancedClickCounter />
+      <EnhancedHoverCounter />
+      <hr></hr>
+
+
+
+    {/* Context API */}
+    <ThemeProvider>
+      <div style={{ padding: "2rem" }}>
+        <h2>🌗 Theme Toggle with Context API</h2>
+        <ThemedButton />
+      </div>
+    </ThemeProvider>
+    <hr></hr>
+
+
+
+
+    {/* React.memo */}
+    <h1>Parent Component</h1>
+    <ParentComponent />
+    <hr></hr>
+
+    {/* Controlled and Uncontrolled Components */}
+    <h1>Controlled and Uncontrolled Components</h1>
+    <ControlledCompExample />
+    <UncontrolledCompExample />
+    <hr></hr>
+
+
+
+    {/* Lifting State Up */}
+    <LiftingStateUp />
+    <hr></hr>
+
     </>
   );
 }
