@@ -18,9 +18,11 @@ class Counter extends Component{
         return(
             <div>
                 <h2>Counter App</h2>
-                
+                <h3>Count: {this.state.count}</h3>
                 <button onClick={this.incrementCount}>+</button>
             </div>
         )
     }
 }
+
+export default Counter;
